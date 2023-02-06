@@ -69,10 +69,10 @@ losetup -D
 
 
 if [[ $fail == 1 ]]; then
-    echo "extra-shrink is done: fail :("
+    echo "extra-shrink failed :("
     exit 1
 else
-    echo "extra-shrink is done: SUCCESS    $((oldtotal / 1024 / 1024)) MB -> $(( newtotal / 1024 / 1024 )) MB"
+    echo "extra-shrink succeeded: $((oldtotal / 1024 / 1024)) MB -> $(( newtotal / 1024 / 1024 )) MB"
 fi
 
 mv $tmp/img "$img.es"

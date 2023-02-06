@@ -26,4 +26,3 @@ mount $p1 root/boot
 mount --bind /dev root/dev
 mount --bind /dev/pts root/dev/pts
 mount proc -t proc root/proc
-
