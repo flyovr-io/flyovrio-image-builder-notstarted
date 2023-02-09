@@ -86,7 +86,7 @@ apt dist-upgrade -y
 
 temp_packages="git make gcc libusb-1.0-0-dev librtlsdr-dev libncurses-dev zlib1g-dev python3-dev python3-venv libzstd-dev"
 packages="chrony librtlsdr0 lighttpd zlib1g dump978-fa soapysdr-module-rtlsdr socat netcat rtl-sdr beast-splitter libzstd1 userconf-pi"
-#packages+=" curl jq gzip dnsutils perl bash-builtins" # for adsbexchange-stats, avoid invoking apt install gain
+packages+=" curl jq gzip dnsutils perl bash-builtins" # for adsbexchange-stats, avoid invoking apt install gain
 
 # these are less than 0.5 MB each, useful tools for various stuff
 packages+=" moreutils inotify-tools cpufrequtils"
