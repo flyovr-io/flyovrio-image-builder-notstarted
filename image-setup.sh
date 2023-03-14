@@ -106,12 +106,12 @@ rm -f /etc/apt/sources.list.d/piaware-*.list
 
 mkdir -p /adsbfi/
 rm -rf /adsbfi/update
-git clone --depth 1 https://github.com/tmantti/adsbfi-update.git /adsbfi/update
+git clone --depth 1 https://github.com/adsbfi/adsbfi-update.git /adsbfi/update
 rm -rf /adsbfi/update/.git
 
 bash /adsbfi/update/update-adsbfi.sh
 
-git clone --depth 1 https://github.com/tmantti/adsbfi-webconfig.git
+git clone --depth 1 https://github.com/adsbfi/adsbfi-webconfig.git
 pushd adsbfi-webconfig
 bash install.sh
 popd
