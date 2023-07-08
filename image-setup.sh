@@ -52,7 +52,7 @@ tmpfs /var/lib/systemd/timers tmpfs defaults,noatime,nosuid,size=50M	0	0
 EOF
 fi
 
-echo adsbfi-feeder > /etc/hostname
+echo flyovrio-feeder > /etc/hostname
 touch /boot/adsb-config.txt # canary used in some scripting if it's the adsbexchange image
 
 mv /etc/cron.hourly/fake-hwclock /etc/cron.daily || true
@@ -104,21 +104,21 @@ done
 apt purge -y piaware-repository
 rm -f /etc/apt/sources.list.d/piaware-*.list
 
-mkdir -p /adsbfi/
-rm -rf /adsbfi/update
-git clone --depth 1 https://github.com/adsbfi/adsbfi-update.git /adsbfi/update
-rm -rf /adsbfi/update/.git
+mkdir -p /flyovrio/
+rm -rf /flyovrio/update
+git clone --depth 1 https://github.com/flyovr-io/flyovrio-update.git /flyovrio/update
+rm -rf /flyovrio/update/.git
 
-bash /adsbfi/update/update-adsbfi.sh
+bash /flyovrio/update/update-flyovrio.sh
 
-git clone --depth 1 https://github.com/adsbfi/adsbfi-webconfig.git
-pushd adsbfi-webconfig
+git clone --depth 1 https://github.com/flyovr-io/flyovrio-webconfig.git
+pushd flyovrio-webconfig
 bash install.sh
 popd
 
 bash -c "$(curl -L -o - https://github.com/wiedehopf/graphs1090/raw/master/install.sh)"
 #make sure the symlinks are present for graphs1090 data collection:
-ln -snf /run/adsbfi-978 /usr/share/graphs1090/978-symlink/data
+ln -snf /run/flyovrio-978 /usr/share/graphs1090/978-symlink/data
 ln -snf /run/readsb /usr/share/graphs1090/data-symlink/data
 
 bash -c "$(curl -L -o - https://github.com/wiedehopf/adsb-scripts/raw/master/autogain-install.sh)"
@@ -136,9 +136,9 @@ apt clean
 sed -i -e 's#^driftfile.*#driftfile /var/tmp/chrony.drift#' /etc/chrony/chrony.conf
 
 # config symlinks
-ln -sf /boot/adsbfi-978env /etc/default/dump978-fa
-ln -sf /boot/adsbfi-env /etc/default/readsb
-ln -sf /boot/adsb-config.txt /etc/default/adsbfi
+ln -sf /boot/flyovrio-978env /etc/default/dump978-fa
+ln -sf /boot/flyovrio-env /etc/default/readsb
+ln -sf /boot/adsb-config.txt /etc/default/flyovrio
 
 cd /
 rm -rf /utemp
